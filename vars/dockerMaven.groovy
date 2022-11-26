@@ -3,7 +3,7 @@ def call() {
         sh 'rm -rf *'
         git branch: 'main', url: "https://github.com/b50-clouddevops/${COMPONENT}.git"
         
-        stage('Image Build') {
+        stage('Preparing Binary') {
             sh "mvn clean package"
             sh "mv target/shipping-1.0.jar shipping.jar"
         }
