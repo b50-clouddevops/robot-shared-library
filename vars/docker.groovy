@@ -18,11 +18,11 @@ def call() {
         git branch: 'main', url: "https://github.com/b50-clouddevops/${COMPONENT}.git"
 
         stage('Docker Image Build') {
-            sh "docker build -t "
+            sh "docker build -t 355449129696.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest"
             sh "docker images"
         }
 
-        stage('Docker Build') {
+        stage('Docker Push') {
             sh "docker build ."
             sh "docker images"
         }
