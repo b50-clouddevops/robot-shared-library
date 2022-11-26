@@ -18,10 +18,10 @@ def call() {
         git branch: 'main', url: "https://github.com/b50-clouddevops/${COMPONENT}.git"
 
             stage('Docker Image Build') {
-                sh "docker build -t 355449129696.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest"
+                sh "docker build -t 355449129696.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest ."
                 sh "docker images"
             }
-            
+
           if (env.TAG_NAME != null) {
             stage('Docker Push') {
                 sh "docker tag 355449129696.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest  355449129696.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME}"
