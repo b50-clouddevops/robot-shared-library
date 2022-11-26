@@ -23,8 +23,7 @@ def call() {
         }
 
         stage('Docker Push') {
-            sh "docker build ."
-            sh "docker images"
+            sh "docker tag 355449129696.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest  355449129696.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:"
         }
     }
 }
