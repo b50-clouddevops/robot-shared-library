@@ -8,7 +8,7 @@ def call() {
             sh "mv target/shipping-1.0.jar shipping.jar"
         }
         stage('Docker Build') {
-            sh "docker build ."
+            sh "docker build -t 355449129696.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest ."
             sh "docker images"
         }
         if (env.TAG_NAME != null) {
