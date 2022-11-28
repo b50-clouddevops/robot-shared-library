@@ -17,6 +17,10 @@ def call() {
         sh 'rm -rf *'
         git branch: 'main', url: "https://github.com/b50-clouddevops/${COMPONENT}.git"
 
+            env.APPTYPE="angularjs"
+            common.sonarCheck()
+            common.lintCheck()
+
             stage('Docker Image Build') {
                 sh "docker build -t 355449129696.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest ."
                 sh "docker images"
