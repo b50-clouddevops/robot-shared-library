@@ -1,7 +1,11 @@
 def call() {
     pipeline {
         agent any 
-
+   parameters {
+        string(name: 'VERSION', defaultValue: '', description: 'Chose the version to deploy')
+        string(name: 'ENV', defaultValue: 'dev', description: 'Chose the ENV to deploy')
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+    }
         stages {
             stage('Lint Check') {
                 steps {
