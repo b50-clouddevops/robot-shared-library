@@ -1,5 +1,5 @@
 def call() {
-    pipeline {
+pipeline {
         agent any 
    parameters {
         string(name: 'VERSION', defaultValue: '', description: 'Chose the version to deploy')
