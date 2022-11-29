@@ -11,7 +11,8 @@ def call() {
                     sh "echo Authenticating to $ENV EKS"
                     sh "aws eks update-kubeconfig --name ${ENV}-eks-cluster"
                     sh "kubectl get nodes"
-                    sh "kuebctl apply -f k8-deploy.yml"
+                    sh "sed -e 's/VERSION/${VERSION}/' k8-deploy.yml > deploy.yml"
+                    sh "kuebctl apply -f deploy.yml"
                 }
             }
 
